@@ -28,11 +28,12 @@ public class BasketServlet extends HttpServlet {
 
         if (items != null && !items.isEmpty()) {
             out.println("<table border='1'>");
-            out.println("<tr><th>ID</th><th>Item</th></tr>");
+            out.println("<tr><th>ID</th><th>Item</th><th>Quantity</th></tr>");
             for (Basket item : items) {
                 out.println("<tr>");
                 out.println("<td>" + item.getId() + "</td>");
                 out.println("<td>" + item.getItem() + "</td>");
+                out.println("<td>" + item.getQuantity() + "</td>");
                 out.println("</tr>");
             }
             out.println("</table>");
@@ -43,6 +44,11 @@ public class BasketServlet extends HttpServlet {
         out.println("<br><br>");
         out.println("<form action='" + request.getContextPath() + "/index.jsp' method='get'>");
         out.println("<input type='submit' value='Powrót do strony głównej'>");
+        out.println("</form>");
+
+        out.println("<br><br>");
+        out.println("<form action='" + request.getContextPath() + "/clear-basket' method='post'>");
+        out.println("<input type='submit' value='Wyczyść koszyk'>");
         out.println("</form>");
 
         out.println("</body></html>");
